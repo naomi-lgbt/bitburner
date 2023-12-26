@@ -1,7 +1,6 @@
 /**
  * Generates a command for reaching the
  * target server.
- *
  * @param {NS} ns The Netscript Module.
  */
 function main(ns) {
