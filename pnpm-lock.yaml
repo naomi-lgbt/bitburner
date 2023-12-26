@@ -18,7 +18,7 @@ devDependencies:
     version: 3.2.0(prettier@3.1.1)
   '@nhcarrigan/typescript-config':
     specifier: 3.0.0
-    version: 3.0.0(typescript@5.2.2)
+    version: 3.0.0(typescript@5.3.3)
   '@types/chai':
     specifier: 4.3.11
     version: 4.3.11
@@ -59,8 +59,8 @@ devDependencies:
     specifier: 10.0.0
     version: 10.0.0(mocha@10.2.0)
   typescript:
-    specifier: 5.2.2
-    version: 5.2.2
+    specifier: 5.3.3
+    version: 5.3.3
 
 packages:
 
@@ -162,13 +162,13 @@ packages:
       prettier: 3.1.1
     dev: true
 
-  /@nhcarrigan/typescript-config@3.0.0(typescript@5.2.2):
+  /@nhcarrigan/typescript-config@3.0.0(typescript@5.3.3):
     resolution: {integrity: sha512-uLi6gIMBW9Frqfg+XwKKEt1JW/s2oJiCoQ2MA6DJROeSLcAd+kvDcMTRGb74DT86PSIEVGby9/BqJSl7okSgZg==}
     engines: {node: '20', pnpm: '8'}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      typescript: 5.2.2
+      typescript: 5.3.3
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
@@ -2053,8 +2053,8 @@ packages:
       is-typed-array: 1.1.12
     dev: true
 
-  /typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
