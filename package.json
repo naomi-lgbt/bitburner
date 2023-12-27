@@ -2,6 +2,7 @@
   "name": "nodejs-typescript-template",
   "version": "0.0.0",
   "description": "A template for my nodejs projects",
+  "type": "module",
   "scripts": {
     "lint": "eslint scripts test --max-warnings 0 && prettier scripts test --check",
     "test": "mocha -u tdd  test/**/*.spec.js --recursive --exit --timeout 10000"
