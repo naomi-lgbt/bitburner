@@ -1,0 +1,6 @@
+{
+  "include": ["scripts/**/*"],
+  "reporter": ["text", "html"],
+  "all": true,
+  "lines": 90
+}

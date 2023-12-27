@@ -1,7 +1,7 @@
 /**
  * Generates a command for reaching the
  * target server.
- * @param {NS} ns The Netscript Module.
+ * @param {NS} ns The NetScript Module.
  */
 export function main(ns) {
   const targetServer = ns.args[0];

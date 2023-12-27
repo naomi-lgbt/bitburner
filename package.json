@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint scripts test --max-warnings 0 && prettier scripts test --check",
-    "test": "mocha -u tdd  test/**/*.spec.js --recursive --exit --timeout 10000"
+    "test": "c8 --check-coverage mocha -u tdd  'test/**/*.spec.js' --recursive --exit --timeout 10000",
+    "test:nocov": "mocha -u tdd  'test/**/*.spec.js' --recursive --exit --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "@types/chai": "4.3.11",
     "@types/mocha": "10.0.6",
     "@types/node": "20.10.5",
+    "c8": "8.0.1",
     "chai": "4.3.10",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
@@ -47,6 +49,7 @@
     "eslint-plugin-prettier": "5.1.2",
     "mocha": "10.2.0",
     "prettier": "3.1.1",
+    "rimraf": "5.0.5",
     "ts-mocha": "10.0.0",
     "typescript": "5.2.2"
   }
