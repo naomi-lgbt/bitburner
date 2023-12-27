@@ -3,7 +3,7 @@
  * target server.
  * @param {NS} ns The Netscript Module.
  */
-function main(ns) {
+export function main(ns) {
   const targetServer = ns.args[0];
   const targetExists = ns.serverExists(targetServer);
   if (!targetExists) {
@@ -21,7 +21,3 @@ function main(ns) {
       .join(";")}`
   );
 }
-
-module.exports = {
-  main
-};

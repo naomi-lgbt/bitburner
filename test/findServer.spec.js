@@ -1,7 +1,7 @@
-const { assert } = require("chai");
-const { suite, test } = require("mocha");
+import { assert } from "chai";
+import { suite, test } from "mocha";
 
-const { main } = require("../scripts/findServer");
+import { main } from "../scripts/findServer.js";
 
 suite("findServer example test", () => {
   test("It uses the assert API", () => {
