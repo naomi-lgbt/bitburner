@@ -12,9 +12,31 @@ export async function prepare(ns) {
     ns.print(`Target ${target} does not exist.`);
     return;
   }
+  if (ns.fileExits("brutessh.exe", "home")) {
+    ns.tprint("Opening SSH ports.");
+    ns.brutessh(target);
+  }
+  if (ns.fileExits("ftpcrack.exe", "home")) {
+    ns.tprint("Opening FTP ports.");
+    ns.ftpcrack(target);
+  }
+  if (ns.fileExits("relaysmtp.exe", "home")) {
+    ns.tprint("Opening SMTP ports.");
+    ns.relaysmtp(target);
+  }
+  if (ns.fileExits("httpsworm.exe", "home")) {
+    ns.tprint("Opening HTTP ports.");
+    ns.httpworm(target);
+  }
+  if (ns.fileExits("sqlinject.exe", "home")) {
+    ns.tprint("Opening SQL ports.");
+    ns.sqlinject(target);
+  }
   if (!ns.hasRootAccess(target)) {
+    ns.tprint("Granting root.");
     ns.nuke(target);
   }
+
   await ns.scp(["scripts/batch.js", "scripts/modules/findServer.js"], target);
 
   const memAvailable = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
@@ -24,7 +46,7 @@ export async function prepare(ns) {
   ns.tprint(`Needed: ${memNeeded}`);
   ns.tprint(`Threads to run: ${threads}`);
 
-  await ns.exec(`scripts/batch.js`, target, threads, target);
+  ns.exec(`scripts/batch.js`, target, threads, target);
 }
 
 export const main = prepare;
