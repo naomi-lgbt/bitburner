@@ -12,23 +12,23 @@ export async function prepare(ns) {
     ns.print(`Target ${target} does not exist.`);
     return;
   }
-  if (ns.fileExits("brutessh.exe", "home")) {
+  if (ns.fileExists("brutessh.exe", "home")) {
     ns.tprint("Opening SSH ports.");
     ns.brutessh(target);
   }
-  if (ns.fileExits("ftpcrack.exe", "home")) {
+  if (ns.fileExists("ftpcrack.exe", "home")) {
     ns.tprint("Opening FTP ports.");
     ns.ftpcrack(target);
   }
-  if (ns.fileExits("relaysmtp.exe", "home")) {
+  if (ns.fileExists("relaysmtp.exe", "home")) {
     ns.tprint("Opening SMTP ports.");
     ns.relaysmtp(target);
   }
-  if (ns.fileExits("httpsworm.exe", "home")) {
+  if (ns.fileExists("httpsworm.exe", "home")) {
     ns.tprint("Opening HTTP ports.");
     ns.httpworm(target);
   }
-  if (ns.fileExits("sqlinject.exe", "home")) {
+  if (ns.fileExists("sqlinject.exe", "home")) {
     ns.tprint("Opening SQL ports.");
     ns.sqlinject(target);
   }
