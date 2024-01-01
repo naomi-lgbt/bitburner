@@ -5,7 +5,7 @@ import { findServer } from "./modules/findServer";
  * and initialises the batched hacking script.
  * @param {NS} ns The NetScript Module.
  */
-export async function prepare(ns) {
+export function prepare(ns) {
   const target = ns.args[0];
   const exists = findServer(ns, target);
   if (!exists) {
@@ -37,16 +37,44 @@ export async function prepare(ns) {
     ns.nuke(target);
   }
 
-  await ns.scp(["scripts/batch.js", "scripts/modules/findServer.js"], target);
+  ns.scp(
+    [
+      "scripts/batch.js",
+      "scripts/grow.js",
+      "scripts/hack.js",
+      "scripts/weaken.js"
+    ],
+    target
+  );
 
   const memAvailable = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
-  const memNeeded = ns.getScriptRam("scripts/batch.js", target);
+  const memNeeded =
+    ns.getScriptRam("scripts/batch.js", target) +
+    ns.getScriptRam("scripts/hack.js") +
+    ns.getScriptRam("scripts/weaken.js") * 2 +
+    ns.getScriptRam("scripts/grow.js");
   const threads = Math.floor(memAvailable / memNeeded);
   ns.tprint(`Available: ${memAvailable}`);
   ns.tprint(`Needed: ${memNeeded}`);
   ns.tprint(`Threads to run: ${threads}`);
 
-  ns.exec(`scripts/batch.js`, target, threads, target);
+  if (memNeeded > memAvailable) {
+    const smallerNeeded = ns.getScriptRam("scripts/slowBatch.js");
+    const smallerThreads = Math.floor(memAvailable / smallerNeeded);
+    ns.tprint(`Cannot run batch script. Running slower version...`);
+    ns.scp("scripts/slowBatch.js", target);
+    ns.exec(
+      "scripts/slowBatch.js",
+      target,
+      smallerThreads,
+      target,
+      smallerThreads
+    );
+    return;
+  }
+
+  ns.tprint(`Running batch script.`);
+  ns.exec(`scripts/batch.js`, target, threads, target, threads);
 }
 
 export const main = prepare;
