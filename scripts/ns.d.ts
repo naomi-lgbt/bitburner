@@ -265,7 +265,7 @@ declare type NS = {
    * @param {string} hostName The name of the server to check (defaults to current server).
    * @returns {boolean} True if the file exists on the server.
    */
-  fileExits: (fileName: string, hostName: string) => boolean;
+  fileExists: (fileName: string, hostName: string) => boolean;
   /**
    * Check if the given script is running. Note that scripts are looked at by both name AND
    * arguments, so they must match exactly.
