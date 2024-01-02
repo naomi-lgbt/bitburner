@@ -27,7 +27,7 @@ export function findServer(ns, target) {
 /**
  * Exists to make this available to run directly
  * in the CLI.
- * @param {NS} ns The NetScript module. 
+ * @param {NS} ns The NetScript module.
  */
 export function main(ns) {
   const target = ns.args[0];

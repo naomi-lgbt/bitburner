@@ -27,7 +27,7 @@ export async function prepare(ns) {
     ns.tprint("Opening SMTP ports.");
     ns.relaysmtp(target);
   }
-  if (ns.fileExists("httpsworm.exe", "home")) {
+  if (ns.fileExists("httpworm.exe", "home")) {
     ns.tprint("Opening HTTP ports.");
     ns.httpworm(target);
   }
@@ -81,9 +81,13 @@ export async function prepare(ns) {
   ns.tprint(`Threads to run: ${threads}`);
 
   if (memNeeded > memAvailable) {
+    ns.tprint(`Cannot run batch script. Running slower version...`);
     const smallerNeeded = ns.getScriptRam("scripts/slowBatch.js");
     const smallerThreads = Math.floor(memAvailable / smallerNeeded);
-    ns.tprint(`Cannot run batch script. Running slower version...`);
+    if (smallerThreads <= 0) {
+      ns.tprint("Not enough threads to run smaller batch. Exiting.");
+      return;
+    }
     ns.scp("scripts/slowBatch.js", target);
     ns.exec(
       "scripts/slowBatch.js",
