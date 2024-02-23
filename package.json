@@ -36,7 +36,7 @@
   "devDependencies": {
     "@nhcarrigan/prettier-config": "3.2.0",
     "@nhcarrigan/typescript-config": "3.0.0",
-    "@types/chai": "4.3.11",
+    "@types/chai": "4.3.12",
     "@types/mocha": "10.0.6",
     "@types/node": "20.11.20",
     "c8": "8.0.1",
